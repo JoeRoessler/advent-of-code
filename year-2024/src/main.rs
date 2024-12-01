@@ -1,7 +1,7 @@
 #![allow(dead_code, unused_imports, unused_variables, unused_mut, unreachable_code)]
+mod day_1;
 
 
 fn main() {
-    let my_var = 1;
-    println!("Hello, world!");
+    day_1::main();
 }
