@@ -9,7 +9,7 @@ pub fn main() {
     right_list.sort();
 
     // for each element compute the distance
-    // this is abs element-wist subtraction
+    // this is abs element-wise subtraction
     let distance: Vec<i32> = left_list.iter().zip(right_list.iter()).map(|(x, y)| (x - y).abs()).collect();
     let sum: i32 = distance.into_iter().sum();
 
