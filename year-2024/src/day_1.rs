@@ -1,4 +1,5 @@
 use std::fs;
+use std::collections::HashMap;
 
 fn part1(left_list: &mut [i32], right_list: &mut [i32]) -> i32{
     left_list.sort();
@@ -11,7 +12,6 @@ fn part1(left_list: &mut [i32], right_list: &mut [i32]) -> i32{
 
     sum
 }
-
 
 pub fn main() {
     // read input
@@ -35,6 +35,21 @@ pub fn main() {
 
     let part1_sum = part1(&mut left_list, &mut right_list);
 
-    println!("The distance between the lists is {part1_sum}")
+    println!("The distance between the lists is {part1_sum}");
+
+    // part 2 --------------------------------------------------
+    let mut occurrences: HashMap<i32, i32> = HashMap::new();
+    let mut sim_score = 0;
+
+    for &num in &right_list {
+        *occurrences.entry(num).or_insert(0) += 1;
+    }
+
+    for &num in &left_list {
+        let multiplier = occurrences.get(&num).unwrap_or(&0);
+        sim_score += &num * multiplier;
+    }
+
+    println!("The similarity score is {}", sim_score);
 
 }
